@@ -2,6 +2,15 @@
 
 sudo echo 'hdmi_force_hotplug=1' >> /boot/config.txt
 
+cd ~
+wget https://project-downloads.drogon.net/wiringpi-latest.deb
+sudo dpkg -i wiringpi-latest.deb
+
+git clone https://github.com/alexisspencer/temp_control.git
+cd temp_control/
+
+gcc -o temp_control temp_control.c ssd1306_i2c.c -lwiringPi
+
 cd /home/pi/.config/
 mkdir /home/pi/.config/autostart
 cd /home/pi/.config/autostart
