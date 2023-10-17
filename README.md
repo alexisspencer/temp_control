@@ -3,6 +3,7 @@
 Forked and updated from original at [https://github.com/OldWang-666/temp_control](https://github.com/OldWang-666/temp_control)
 
 ## Automated install
+Open Terminal (either locally or via SSH) and run as user "Pi"
 `bash <(wget --no-cache -qO- https://raw.githubusercontent.com/alexisspencer/temp_control/main/install.sh)`
 
 ## Manual Install
