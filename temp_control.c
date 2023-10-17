@@ -186,8 +186,8 @@ int main(void)
 			delay(10);
 		}
 
-		if (abs(temp - level_temp) >= 1)
-        {
+		//if (abs(temp - level_temp) >= 1)
+        //{
             if (temp <= 45)
             {
                 level_temp = 45;
@@ -277,7 +277,7 @@ int main(void)
 				setRGBEffect(4);
     			setRGBSpeed(3);
             }
-        }
+        // }
 
 		delay(500);
 
