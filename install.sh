@@ -14,7 +14,7 @@ echo "--------------------------------------------------------------------------
 echo "$(date +\%Y-\%m-\%d\ \%H:\%M) Setting hdmi_force_hotplug=1 in /boot/config.txt"
 echo "--------------------------------------------------------------------------------------"
 
-sudo echo 'hdmi_force_hotplug=1' >> /boot/config.txt
+sudo su -c "echo 'hdmi_force_hotplug=1' >> /boot/config.txt" root
 
 echo " "
 echo " "
@@ -25,7 +25,7 @@ echo "--------------------------------------------------------------------------
 
 cd ~
 wget https://project-downloads.drogon.net/wiringpi-latest.deb
-sudo dpkg -i wiringpi-latest.deb
+sudo su -c "dpkg -i wiringpi-latest.deb" root
 
 echo " "
 echo " "
