@@ -32,12 +32,12 @@ int fd_i2c;
 #define RGB_Color  0x06
 
 
-void setRGB(int num, int R, int G, int B);
-void closeRGB();
+// void setRGB(int num, int R, int G, int B);
+// void closeRGB();
 
-void setRGBEffect(int effect);
-void setRGBSpeed(int speed);
-void setRGBColor(int color);
+// void setRGBEffect(int effect);
+// void setRGBSpeed(int speed);
+// void setRGBColor(int color);
 
 int main(void)
 {
