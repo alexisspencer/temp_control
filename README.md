@@ -11,6 +11,13 @@ Open Terminal (either locally or via SSH) and run as user "Pi"
 bash <(wget --no-cache -qO- https://raw.githubusercontent.com/alexisspencer/temp_control/main/install.sh)
 ```
 
+You must also make sure that `hdmi_force_hotplug=1` is uncommented in `/boot/config.txt`  
+(The automated install script may struggle to do this, so make sure)  
+This means removing the # in front of this command in the config.txt file
+```
+sudo nano /boot/config.txt
+```
+Remove the # in front of `hdmi_force_hotplug=1` then `CTRL-X` and then `Y` to save changes and exit
 
 
 ## Manual Install
