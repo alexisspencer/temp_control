@@ -72,7 +72,7 @@ int main(void)
 	// Turn on the RGB light effect
 	wiringPiI2CWriteReg8(fd_i2c, 0x04, 0x01);
 
-	// wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x00);   // close fan
+	wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x01);   // full speed fan
 	// ssd1306_display();      //show logo
 	// ssd1306_clearDisplay();
 	// delay(500);
