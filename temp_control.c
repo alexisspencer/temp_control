@@ -305,6 +305,8 @@ int main(void)
 	}
 
 	return 0;
+	wiringPiI2CWriteReg8(fd_i2c, 0x07, 0x00);
+    delay(10);
 }
 
 
