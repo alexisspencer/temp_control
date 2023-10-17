@@ -1,11 +1,11 @@
-// 导入wiringPi/I2C库
+// Import wiringPi/I2C library
 #include <wiringPi.h>
 #include <wiringPiI2C.h>
 
-// 导入oled显示屏库
+// Import OLED display library
 #include "ssd1306_i2c.h"
 
-// 导入文件控制函数库
+// Import the file control library
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -13,12 +13,12 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/sysinfo.h>
-// 读取IP库
+// Read the IP library
 #include <ifaddrs.h>
 #include <netinet/in.h>
 #include <string.h>
 #include <arpa/inet.h>
-// 读取磁盘库
+// Read Disk Library
 #include <sys/vfs.h>
 #include <unistd.h>
 
@@ -322,7 +322,7 @@ void setRGB(int num, int R, int G, int B)
     }
 }
 
-// 关闭RGB
+// Turn off RGB
 void closeRGB()
 {
     wiringPiI2CWriteReg8(fd_i2c, 0x07, 0x00);
