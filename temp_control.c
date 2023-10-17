@@ -22,6 +22,8 @@
 #include <sys/vfs.h>
 #include <unistd.h>
 
+
+int fd_i2c;
 #define TEMP_PATH "/sys/class/thermal/thermal_zone0/temp"
 #define MAX_SIZE 32
 #define Max_LED  3
