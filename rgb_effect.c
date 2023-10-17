@@ -65,7 +65,7 @@ void closeRGB()
     wiringPiI2CWriteReg8(fd_i2c, 0x07, 0x00);
 }
 
-// 设置RGB灯效，0流水灯，1呼吸灯,2跑马灯，3彩虹灯，4炫彩灯
+// Set RGB lighting effects, 0 running water lights, 1 breathing lights, 2 marquee lights, 3 rainbow lights, 4 dazzling lights
 void setRGBEffect(int effect)
 {
     if (effect >= 0 && effect <= 4)
@@ -73,7 +73,7 @@ void setRGBEffect(int effect)
         wiringPiI2CWriteReg8(fd_i2c, RGB_Effect, effect);
     }  
 }
-// 设置RGB速度：1低速，2中速（默认），3高速
+// Set RGB speed: 1 low speed, 2 medium speed (default), 3 high speed
 void setRGBSpeed(int speed)
 {
     if (speed >= 1 && speed <= 3)
@@ -81,7 +81,7 @@ void setRGBSpeed(int speed)
         wiringPiI2CWriteReg8(fd_i2c, RGB_Speed, speed);
     }
 }
-// 设置流水灯/呼吸灯颜色：0红色，1绿色（默认），2蓝色，3黄色，4紫色，5青色，6白色
+// Set the running light/breathing lamp color: 0 red, 1 green (default), 2 blue, 3 yellow, 4 purple, 5 cyan, 6 white
 void setRGBColor(int color)
 {
     if (color >= 0 && color <= 6)
