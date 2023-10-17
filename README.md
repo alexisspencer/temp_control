@@ -20,4 +20,4 @@ Then compile, run from terminal in temp_control folder:
 `gcc -o temp_control temp_control.c ssd1306_i2c.c -lwiringPi`
 
 
-Instructions for customised deployment can be found at https://wiki.dfrobot.com/Smart_Cooling_Hat_For_Raspberry_Pi_4B_SKU_DFR0672#target_2
+Instructions for customised deployment can be found at [https://wiki.dfrobot.com/Smart_Cooling_Hat_For_Raspberry_Pi_4B_SKU_DFR0672#target_2](https://wiki.dfrobot.com/Smart_Cooling_Hat_For_Raspberry_Pi_4B_SKU_DFR0672#target_2)
