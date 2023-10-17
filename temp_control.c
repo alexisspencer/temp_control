@@ -69,10 +69,14 @@ int main(void)
 		delay(500);
 	}
 
+	// Turn off the RGB lights first
+	wiringPiI2CWriteReg8(fd_i2c, 0x07, 0x00);
+    delay(10);
+
 	// Turn on the RGB light effect
 	wiringPiI2CWriteReg8(fd_i2c, 0x04, 0x01);
 
-	wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x01);   // full speed fan
+	wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x01);   // full speed fan
 	// ssd1306_display();      //show logo
 	// ssd1306_clearDisplay();
 	// delay(500);
@@ -212,63 +216,63 @@ int main(void)
                 level_temp = 49;
 				wiringPiI2CWriteReg8(fd_i2c, 0x00, 0xff);
 				wiringPiI2CWriteReg8(fd_i2c, RGB_Color, 5);
-                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x03);
+                wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x03);
             }
             else if (temp <= 51)
             {
                 level_temp = 51;
 				wiringPiI2CWriteReg8(fd_i2c, 0x00, 0xff);
 				wiringPiI2CWriteReg8(fd_i2c, RGB_Color, 5);
-                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x04);
+                wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x04);
             }
             else if (temp <= 53)
             {
                 level_temp = 53;
 				wiringPiI2CWriteReg8(fd_i2c, 0x00, 0xff);
 				wiringPiI2CWriteReg8(fd_i2c, RGB_Color, 1);
-                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x05);
+                wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x05);
             }
             else if (temp <= 55)
             {
                 level_temp = 55;
 				wiringPiI2CWriteReg8(fd_i2c, 0x00, 0xff);
 				wiringPiI2CWriteReg8(fd_i2c, RGB_Color, 3);
-                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x06);
+                wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x06);
             }
             else if (temp <= 57)
             {
                 level_temp = 57;
 				wiringPiI2CWriteReg8(fd_i2c, 0x00, 0xff);
 				wiringPiI2CWriteReg8(fd_i2c, RGB_Color, 3);
-                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x07);
+                wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x07);
             }
             else if (temp <= 59)
             {
                 level_temp = 59;
 				wiringPiI2CWriteReg8(fd_i2c, 0x00, 0xff);
 				wiringPiI2CWriteReg8(fd_i2c, RGB_Color, 4);
-                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x08);
+                wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x08);
             }
             else if (temp <= 61)
             {
                 level_temp = 61;
 				wiringPiI2CWriteReg8(fd_i2c, 0x00, 0xff);
 				wiringPiI2CWriteReg8(fd_i2c, RGB_Color, 4);
-                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x09);
+                wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x09);
             }
             else if (temp <= 63)
             {
                 level_temp = 63;
 				wiringPiI2CWriteReg8(fd_i2c, 0x00, 0xff);
 				wiringPiI2CWriteReg8(fd_i2c, RGB_Color, 0);
-                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x01);
+                wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x01);
             }
             else if (temp > 63)
             {
                 level_temp = 65;
 				wiringPiI2CWriteReg8(fd_i2c, 0x00, 0xff);
 				wiringPiI2CWriteReg8(fd_i2c, RGB_Color, 0);
-                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x01);
+                wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x01);
             }
         }
 
