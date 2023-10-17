@@ -263,7 +263,7 @@ int main(void)
             }
             else if (temp <= 63)
             {
-                level_temp = 61;
+                level_temp = 63;
                 wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x09);
 				setRGB(Max_LED, 0xff, 0x45, 0x00);
 				setRGBEffect(4);
@@ -271,7 +271,7 @@ int main(void)
             }
             else
             {
-                level_temp = 63;
+                level_temp = 65;
                 wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x01);
 				setRGB(Max_LED, 0xff, 0x00, 0x00);
 				setRGBEffect(4);
