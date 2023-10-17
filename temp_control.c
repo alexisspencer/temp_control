@@ -192,67 +192,76 @@ int main(void)
             {
                 level_temp = 45;
                 wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x00);
-				setRGB(Max_LED, 0x00, 0x00, 0xff);
+				// setRGB(Max_LED, 0x00, 0x00, 0xff);
+				setRGBColor(6);
 				setRGBEffect(0);
     			setRGBSpeed(1);
             }
             else if (temp <= 47)
             {
                 level_temp = 47;
-                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x02);
-				setRGB(Max_LED, 0x1e, 0x90, 0xff);
+                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x00);
+				setRGB(Max_LED, 0x1e, 0x00, 0xff);
 				setRGBEffect(0);
     			setRGBSpeed(1);
             }
             else if (temp <= 49)
             {
                 level_temp = 49;
-                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x03);
-				setRGB(Max_LED, 0x00, 0xbf, 0xff);
+                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x02);
+				setRGB(Max_LED, 0x00, 0x90, 0xff);
 				setRGBEffect(1);
     			setRGBSpeed(1);
             }
             else if (temp <= 51)
             {
                 level_temp = 51;
-                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x04);
-				setRGB(Max_LED, 0x5f, 0x9e, 0xa0);
+                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x03);
+				setRGB(Max_LED, 0x5f, 0xbf, 0xa0);
 				setRGBEffect(1);
     			setRGBSpeed(2);
             }
             else if (temp <= 53)
             {
                 level_temp = 53;
-                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x05);
-				setRGB(Max_LED, 0xff, 0xff, 0x00);
+                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x04);
+				setRGB(Max_LED, 0xff, 0x9e, 0x00);
 				setRGBEffect(2);
     			setRGBSpeed(2);
             }
             else if (temp <= 55)
             {
                 level_temp = 55;
-                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x06);
-				setRGB(Max_LED, 0xff, 0xd7, 0x00);
+                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x05);
+				setRGB(Max_LED, 0xff, 0xff, 0x00);
 				setRGBEffect(2);
     			setRGBSpeed(2);
             }
             else if (temp <= 57)
             {
                 level_temp = 57;
-                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x07);
-				setRGB(Max_LED, 0xff, 0xa5, 0x00);
+                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x06);
+				setRGB(Max_LED, 0xff, 0xd7, 0x00);
 				setRGBEffect(3);
     			setRGBSpeed(3);
             }
             else if (temp <= 59)
             {
                 level_temp = 59;
-                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x08);
-				setRGB(Max_LED, 0xff, 0x8c, 0x00);
+                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x07);
+				setRGB(Max_LED, 0xff, 0xa5, 0x00);
 				setRGBEffect(3);
     			setRGBSpeed(3);
             }
             else if (temp <= 61)
+            {
+                level_temp = 61;
+                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x08);
+				setRGB(Max_LED, 0xff, 0x8c, 0x00);
+				setRGBEffect(4);
+    			setRGBSpeed(3);
+            }
+            else if (temp <= 63)
             {
                 level_temp = 61;
                 wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x09);
