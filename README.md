@@ -2,11 +2,16 @@
 
 Forked and updated from original at [https://github.com/OldWang-666/temp_control](https://github.com/OldWang-666/temp_control)
 
+Original instructions: [https://wiki.dfrobot.com/Smart_Cooling_Hat_For_Raspberry_Pi_4B_SKU_DFR0672#target_2](https://wiki.dfrobot.com/Smart_Cooling_Hat_For_Raspberry_Pi_4B_SKU_DFR0672#target_2)
+
+
 ## Automated install
 Open Terminal (either locally or via SSH) and run as user "Pi"
 ```
 bash <(wget --no-cache -qO- https://raw.githubusercontent.com/alexisspencer/temp_control/main/install.sh)
 ```
+
+
 
 ## Manual Install
 ### Install WiringPi (if not installed):
