@@ -189,15 +189,15 @@ int main(void)
 
 		if (abs(temp - level_temp) >= 1)
         {
-			wiringPiI2CWriteReg8(fd_i2c, 0x07, 0x00);
+			//wiringPiI2CWriteReg8(fd_i2c, 0x07, 0x00);
             if (temp <= 45)
             {
                 level_temp = 45;
 				// setRGB(Max_LED, 0x00, 0x00, 0xff);
 				wiringPiI2CWriteReg8(fd_i2c, 0x00, 0xff);
 				wiringPiI2CWriteReg8(fd_i2c, RGB_Color, 1);
-				wiringPiI2CWriteReg8(fd_i2c, RGB_Effect, 3);
-				wiringPiI2CWriteReg8(fd_i2c, RGB_Speed, 2);
+				//wiringPiI2CWriteReg8(fd_i2c, RGB_Effect, 3);
+				//wiringPiI2CWriteReg8(fd_i2c, RGB_Speed, 2);
                 wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x02);
             }
             else if (temp <= 47)
