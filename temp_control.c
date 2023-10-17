@@ -187,8 +187,9 @@ int main(void)
 			delay(10);
 		}
 
-		//if (abs(temp - level_temp) >= 1)
-        //{
+		if (abs(temp - level_temp) >= 1)
+        {
+			wiringPiI2CWriteReg8(fd_i2c, 0x07, 0x00);
             if (temp <= 45)
             {
                 level_temp = 45;
@@ -258,7 +259,7 @@ int main(void)
 				wiringPiI2CWriteReg8(fd_i2c, RGB_Color, 0);
                 wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x01);
             }
-        // }
+        }
 
 		delay(100);
 
