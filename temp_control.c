@@ -25,6 +25,19 @@
 #define TEMP_PATH "/sys/class/thermal/thermal_zone0/temp"
 #define MAX_SIZE 32
 
+#define Max_LED  3
+#define RGB_Effect 0x04 
+#define RGB_Speed  0x05
+#define RGB_Color  0x06
+// int fd_i2c;
+
+// void setRGB(int num, int R, int G, int B);
+// void closeRGB();
+
+// void setRGBEffect(int effect);
+// void setRGBSpeed(int speed);
+// void setRGBColor(int color);
+
 int main(void)
 {
 	int readed_ip = 0;
@@ -44,7 +57,7 @@ int main(void)
 
 	ssd1306_begin(SSD1306_SWITCHCAPVCC, SSD1306_I2C_ADDRESS);
 
-	// 定义I2C相关参数
+	// Define I2C parameters
 	int fd_i2c;
 	wiringPiSetup();
 	fd_i2c = wiringPiI2CSetup(0x0d);
@@ -55,7 +68,7 @@ int main(void)
 		delay(500);
 	}
 
-	// 开启RGB灯特效
+	// Turn on the RGB light effect
 	wiringPiI2CWriteReg8(fd_i2c, 0x04, 0x03);
 
 	// wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x00);   // close fan
@@ -66,7 +79,7 @@ int main(void)
 
 	while (1)
 	{
-		// 读取系统信息
+		// Read system information
 		if (sysinfo(&sys_info) != 0) // sysinfo(&sys_info) != 0
 		{
 			printf("sysinfo-Error\n");
@@ -78,21 +91,21 @@ int main(void)
 		}
 		else
 		{
-			// 清除屏幕内容
+			// Clear screen content
 			ssd1306_clearDisplay();
 
-			// CPU占用率
+			// CPU usage
 			char CPUInfo[MAX_SIZE] = {0};
 			unsigned long avgCpuLoad = sys_info.loads[0] / 1000;
 			sprintf(CPUInfo, "CPU:%ld%%", avgCpuLoad);
 
-			// 运行内存占用率，剩余/总内存
+			// Running memory usage, remaining/total memory
 			char RamInfo[MAX_SIZE];
 			unsigned long totalRam = sys_info.totalram >> 20;
 			unsigned long freeRam = sys_info.freeram >> 20;
 			sprintf(RamInfo, "RAM:%ld/%ld MB", freeRam, totalRam);
 
-			// 获取IP地址
+			// Obtain an IP address
 			char IPInfo[MAX_SIZE];
 			if (readed_ip == 0)
 			{
@@ -125,7 +138,7 @@ int main(void)
 				getifaddrs(&ifAddrStruct);
 			}
 
-			// 读取CPU温度
+			// Read the CPU temperature
 			char CPUTemp[MAX_SIZE];
 			fd_temp = open(TEMP_PATH, O_RDONLY);
 			if (fd_temp < 0)
@@ -135,7 +148,7 @@ int main(void)
 			}
 			else
 			{
-				// 读取温度并判断
+				// Read the temperature and judge
 				if (read(fd_temp, buf, MAX_SIZE) < 0)
 				{
 					temp = 0;
@@ -143,7 +156,7 @@ int main(void)
 				}
 				else
 				{
-					// 转换为浮点数打印
+					// Convert to floating-point printing
 					temp = atoi(buf) / 1000.0;
 					// printf("temp: %.1f\n", temp);
 					sprintf(CPUTemp, "Temp:%.1fC", temp);
@@ -151,7 +164,7 @@ int main(void)
 			}
 			close(fd_temp);
 
-			// 读取磁盘空间，剩余/总空间
+			// Read disk space, remaining/total space
 			char DiskInfo[MAX_SIZE];
 			statfs("/", &disk_info);
 			unsigned long long totalBlocks = disk_info.f_bsize;
@@ -161,69 +174,183 @@ int main(void)
 			size_t mbFreedisk = freeDisk >> 20;
 			sprintf(DiskInfo, "Disk:%ld/%ldMB", mbFreedisk, mbTotalsize);
 
-			// 在显示屏上要显示的内容
+			// What to display on the display
 			ssd1306_drawText(0, 0, CPUInfo);
 			ssd1306_drawText(56, 0, CPUTemp);
 			ssd1306_drawText(0, 8, RamInfo);
 			ssd1306_drawText(0, 16, DiskInfo);
 			ssd1306_drawText(0, 24, IPInfo);
 
-			// 刷新显示
+			// Refresh the display
 			ssd1306_display();
 			delay(10);
 		}
 
 		if (abs(temp - level_temp) >= 1)
-		{
-			if (temp <= 45)
-			{
-				level_temp = 45;
-				wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x00);
-			}
-			else if (temp <= 47)
-			{
-				level_temp = 47;
-				wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x08);
-			}
-			else if (temp <= 49)
-			{
-				level_temp = 49;
-				wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x08);
-			}
-			else if (temp >= 51)
-			{
-				level_temp = 51;
-				wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x01);
-			}
-		}
+        {
+            if (temp <= 45)
+            {
+                level_temp = 45;
+                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x00);
+				// setRGB(Max_LED, 0x00, 0x00, 0xff);
+				// setRGBEffect(0);
+    			// setRGBSpeed(1);
+            }
+            else if (temp <= 47)
+            {
+                level_temp = 47;
+                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x02);
+				// setRGB(Max_LED, 0x1e, 0x90, 0xff);
+				// setRGBEffect(0);
+    			// setRGBSpeed(1);
+            }
+            else if (temp <= 49)
+            {
+                level_temp = 49;
+                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x03);
+				// setRGB(Max_LED, 0x00, 0xbf, 0xff);
+				// setRGBEffect(1);
+    			// setRGBSpeed(1);
+            }
+            else if (temp <= 51)
+            {
+                level_temp = 51;
+                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x04);
+				// setRGB(Max_LED, 0x5f, 0x9e, 0xa0);
+				// setRGBEffect(1);
+    			// setRGBSpeed(2);
+            }
+            else if (temp <= 53)
+            {
+                level_temp = 53;
+                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x05);
+				// setRGB(Max_LED, 0xff, 0xff, 0x00);
+				// setRGBEffect(2);
+    			// setRGBSpeed(2);
+            }
+            else if (temp <= 55)
+            {
+                level_temp = 55;
+                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x06);
+				// setRGB(Max_LED, 0xff, 0xd7, 0x00);
+				// setRGBEffect(2);
+    			// setRGBSpeed(2);
+            }
+            else if (temp <= 57)
+            {
+                level_temp = 57;
+                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x07);
+				// setRGB(Max_LED, 0xff, 0xa5, 0x00);
+				// setRGBEffect(3);
+    			// setRGBSpeed(3);
+            }
+            else if (temp <= 59)
+            {
+                level_temp = 59;
+                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x08);
+				// setRGB(Max_LED, 0xff, 0x8c, 0x00);
+				// setRGBEffect(3);
+    			// setRGBSpeed(3);
+            }
+            else if (temp <= 61)
+            {
+                level_temp = 61;
+                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x09);
+				// setRGB(Max_LED, 0xff, 0x45, 0x00);
+				// setRGBEffect(4);
+    			// setRGBSpeed(3);
+            }
+            else
+            {
+                level_temp = 63;
+                wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x01);
+				// setRGB(Max_LED, 0xff, 0x00, 0x00);
+				// setRGBEffect(4);
+    			// setRGBSpeed(3);
+            }
+        }
 
 		delay(500);
 
-		if (count == 10)
-		{
-			// 开启RGB灯特效
-			wiringPiI2CWriteReg8(fd_i2c, 0x04, 0x04);
-		}
-		else if (count == 20)
-		{
-			// 开启RGB灯特效
-			wiringPiI2CWriteReg8(fd_i2c, 0x04, 0x02);
-		}
-		else if (count == 30)
-		{
-			// 开启RGB灯特效
-			wiringPiI2CWriteReg8(fd_i2c, 0x04, 0x01);
-		}
-		else if (count == 40)
-		{
-			// 开启RGB灯特效
-			wiringPiI2CWriteReg8(fd_i2c, 0x04, 0x03);
-			count = 0;
-		}
+		// if (count == 10)
+		// {
+		// 	// Turn on the RGB light effect
+		// 	wiringPiI2CWriteReg8(fd_i2c, 0x04, 0x04);
+		// }
+		// else if (count == 20)
+		// {
+		// 	// Turn on the RGB light effect
+		// 	wiringPiI2CWriteReg8(fd_i2c, 0x04, 0x02);
+		// }
+		// else if (count == 30)
+		// {
+		// 	// Turn on the RGB light effect
+		// 	wiringPiI2CWriteReg8(fd_i2c, 0x04, 0x01);
+		// }
+		// else if (count == 40)
+		// {
+		// 	// Turn on the RGB light effect
+		// 	wiringPiI2CWriteReg8(fd_i2c, 0x04, 0x03);
+		// 	count = 0;
+		// }
 		
-		count++;
-		delay(500);
+		// count++;
+		// delay(500);
 	}
 
 	return 0;
+}
+
+
+// Set the RGB light, num if greater than or equal to Max_LED(3), all lights are set together
+// num=(0~3),R=(0~255),G=(0~255),B=(0~255)
+void setRGB(int num, int R, int G, int B)
+{
+    if (num >= Max_LED)
+    {
+        wiringPiI2CWriteReg8(fd_i2c, 0x00, 0xff);
+        wiringPiI2CWriteReg8(fd_i2c, 0x01, R);
+        wiringPiI2CWriteReg8(fd_i2c, 0x02, G);
+        wiringPiI2CWriteReg8(fd_i2c, 0x03, B);
+    }
+    else if (num >= 0)
+    {
+        wiringPiI2CWriteReg8(fd_i2c, 0x00, num);
+        wiringPiI2CWriteReg8(fd_i2c, 0x01, R);
+        wiringPiI2CWriteReg8(fd_i2c, 0x02, G);
+        wiringPiI2CWriteReg8(fd_i2c, 0x03, B);
+    }
+}
+
+// 关闭RGB
+void closeRGB()
+{
+    wiringPiI2CWriteReg8(fd_i2c, 0x07, 0x00);
+    delay(10);
+}
+
+
+// Set RGB lighting effects, 0 running water lights, 1 breathing lights, 2 marquee lights, 3 rainbow lights, 4 dazzling lights
+void setRGBEffect(int effect)
+{
+    if (effect >= 0 && effect <= 4)
+    {
+        wiringPiI2CWriteReg8(fd_i2c, RGB_Effect, effect);
+    }  
+}
+// Set RGB speed: 1 low speed, 2 medium speed (default), 3 high speed
+void setRGBSpeed(int speed)
+{
+    if (speed >= 1 && speed <= 3)
+    {
+        wiringPiI2CWriteReg8(fd_i2c, RGB_Speed, speed);
+    }
+}
+// Set the running light/breathing lamp color: 0 red, 1 green (default), 2 blue, 3 yellow, 4 purple, 5 cyan, 6 white
+void setRGBColor(int color)
+{
+    if (color >= 0 && color <= 6)
+    {
+        wiringPiI2CWriteReg8(fd_i2c, RGB_Color, color);
+    }
 }
