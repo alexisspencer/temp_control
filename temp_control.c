@@ -29,14 +29,14 @@
 #define RGB_Effect 0x04 
 #define RGB_Speed  0x05
 #define RGB_Color  0x06
-// int fd_i2c;
+int fd_i2c;
 
-// void setRGB(int num, int R, int G, int B);
-// void closeRGB();
+void setRGB(int num, int R, int G, int B);
+void closeRGB();
 
-// void setRGBEffect(int effect);
-// void setRGBSpeed(int speed);
-// void setRGBColor(int color);
+void setRGBEffect(int effect);
+void setRGBSpeed(int speed);
+void setRGBColor(int color);
 
 int main(void)
 {
@@ -58,7 +58,7 @@ int main(void)
 	ssd1306_begin(SSD1306_SWITCHCAPVCC, SSD1306_I2C_ADDRESS);
 
 	// Define I2C parameters
-	int fd_i2c;
+	//int fd_i2c;
 	wiringPiSetup();
 	fd_i2c = wiringPiI2CSetup(0x0d);
 	while (fd_i2c < 0)
