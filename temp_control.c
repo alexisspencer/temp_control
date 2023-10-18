@@ -74,16 +74,14 @@ int main(void)
 	}
 
 	// Turn off the RGB lights first
-	wiringPiI2CWriteReg8(fd_i2c, 0x07, 0x00);
-    delay(10);
-
+	
 	// Turn on the RGB light effect
-	wiringPiI2CWriteReg8(fd_i2c, 0x04, 0x01);
+	// wiringPiI2CWriteReg8(fd_i2c, 0x04, 0x01);
 
 	wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x01);   // full speed fan
 	// ssd1306_display();      //show logo
-	// ssd1306_clearDisplay();
-	// delay(500);
+	ssd1306_clearDisplay();
+	delay(500);
 	printf("init ok!\n");
 
 	while (1)
