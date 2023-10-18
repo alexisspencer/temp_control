@@ -247,39 +247,39 @@ int main(void)
 		delay(500);
 
 		// Fan speed set
-		if (temp <= 45)
+		if (level_temp = 45)
 		{
 			wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x02);
 		}
-		else if (temp <= 47)
+		else if (level_temp = 47)
 		{
 			wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x02);
 		}
-		else if (temp <= 49)
+		else if (level_temp = 49)
 		{
 			wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x04);
 		}
-		else if (temp <= 51)
+		else if (level_temp = 51)
 		{
 			wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x04);
 		}
-		else if (temp <= 53)
+		else if (level_temp = 53)
 		{
 			wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x06);
 		}
-		else if (temp <= 55)
+		else if (level_temp = 55)
 		{
 			wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x06);
 		}
-		else if (temp <= 57)
+		else if (level_temp = 57)
 		{
 			wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x08);
 		}
-		else if (temp <= 59)
+		else if (level_temp = 59)
 		{
 			wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x08);
 		}
-		else if (temp <= 61)
+		else if (level_temp = 61)
 		{
 			wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x09);
 		}
