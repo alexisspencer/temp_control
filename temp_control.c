@@ -32,6 +32,9 @@
 #define FAN_Control  0x08
 int fd_i2c;
 
+void setRGB(int num, int R, int G, int B);
+void closeRGB();
+
 // void setRGB(int num, int R, int G, int B);
 // void closeRGB();
 
@@ -92,7 +95,8 @@ int main(void)
 			char *text = "sysinfo-Error";
 			ssd1306_drawString(text);
 			ssd1306_display();
-			continue;
+			// continue;
+			return -1;
 		}
 		else
 		{
@@ -148,25 +152,20 @@ int main(void)
 			fd_temp = open(TEMP_PATH, O_RDONLY);
 			if (fd_temp < 0)
 			{
-				temp = 0;
-				printf("failed to open thermal_zone0/temp\n");
+				fprintf(stderr, "fail to open thermal_zone0/temp\n");
+				return -1;
 			}
-			else
+			// Read the temperature and judge
+			if (read(fd_temp, buf, MAX_SIZE) < 0)
 			{
-				// Read the temperature and judge
-				if (read(fd_temp, buf, MAX_SIZE) < 0)
-				{
-					temp = 0;
-					printf("fail to read temp\n");
-				}
-				else
-				{
-					// Convert to floating-point printing
-					temp = atoi(buf) / 1000.0;
-					// printf("temp: %.1f\n", temp);
-					sprintf(CPUTemp, "Temp:%.1fC", temp);
-				}
+				fprintf(stderr, "fail to read temp\n");
+				return -1;
 			}
+
+			// Convert to floating-point printing
+			temp = atoi(buf) / 1000.0;
+			printf("temp: %.1f\n", temp);
+			sprintf(CPUTemp, "Temp:%.1fC", temp);
 			close(fd_temp);
 
 			// Read disk space, remaining/total space
@@ -276,7 +275,7 @@ int main(void)
             }
         }
 
-		delay(100);
+		delay(500);
 
 		// if (count == 10)
 		// {
