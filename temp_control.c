@@ -197,71 +197,51 @@ int main(void)
             {
                 level_temp = 45;
 				setRGB(Max_LED, 0x00, 0x00, 0xff);
-				delay(500);
-                wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x02);
             }
             else if (temp <= 47)
             {
                 level_temp = 47;
 				setRGB(Max_LED, 0x1e, 0x90, 0xff);
-				delay(500);
-                wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x02);
             }
             else if (temp <= 49)
             {
                 level_temp = 49;
 				setRGB(Max_LED, 0x00, 0xbf, 0xff);
-				delay(500);
-                wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x03);
             }
             else if (temp <= 51)
             {
                 level_temp = 51;
 				setRGB(Max_LED, 0x5f, 0x9e, 0xa0);
-				delay(500);
-                wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x04);
             }
             else if (temp <= 53)
             {
                 level_temp = 53;
 				setRGB(Max_LED, 0xff, 0xff, 0x00);
-				delay(500);
-                wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x05);
             }
             else if (temp <= 55)
             {
                 level_temp = 55;
 				setRGB(Max_LED, 0xff, 0xd7, 0x00);
-				delay(500);
-                wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x06);
             }
             else if (temp <= 57)
             {
                 level_temp = 57;
 				setRGB(Max_LED, 0xff, 0xa5, 0x00);
-				delay(500);
-                wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x07);
             }
             else if (temp <= 59)
             {
                 level_temp = 59;
 				setRGB(Max_LED, 0xff, 0x8c, 0x00);
-				delay(500);
-                wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x08);
             }
             else if (temp <= 61)
             {
                 level_temp = 61;
 				setRGB(Max_LED, 0xff, 0x45, 0x00);
-				delay(500);
-                wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x09);
             }
-            else // if (temp > 61)
+            else
             {
                 level_temp = 63;
 				setRGB(Max_LED, 0xff, 0x00, 0x00);
-				delay(500);
-                wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x01);
             }
         }
 
