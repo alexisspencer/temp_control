@@ -287,7 +287,7 @@ int main(void)
             }
         }
 
-		delay(500);
+		delay(1000);
 
 		// if (count == 10)
 		// {
