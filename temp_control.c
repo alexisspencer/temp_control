@@ -48,6 +48,7 @@ int main(void)
 	int count = 0;
 	int fd_temp;
 	double temp = 0, level_temp = 0;
+	
 	char buf[MAX_SIZE];
 
 	// get system usage / info
@@ -247,8 +248,10 @@ int main(void)
 
 		delay(500);
 
+		int fan_temp = (int) level_temp;
+
 		// Fan speed set
-		switch (level_temp)
+		switch (fan_temp)
         {
         case 45:
             wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x00);
