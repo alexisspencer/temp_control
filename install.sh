@@ -41,9 +41,12 @@ echo " "
 echo " "
 echo " "
 echo "--------------------------------------------------------------------------------------"
-echo "$(date +\%Y-\%m-\%d\ \%H:\%M) Compiling temp_control application"
+echo "$(date +\%Y-\%m-\%d\ \%H:\%M) Compiling applications"
 echo "--------------------------------------------------------------------------------------"
 gcc -o temp_control temp_control.c ssd1306_i2c.c -lwiringPi
+gcc -o fan_temp fan_temp.c ssd1306_i2c.c -lwiringPi
+gcc -o oled oled.c ssd1306_i2c.c -lwiringPi
+gcc -o rgb_temp rgb_temp.c ssd1306_i2c.c -lwiringPi
 
 echo " "
 echo " "
