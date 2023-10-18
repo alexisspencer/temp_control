@@ -248,45 +248,47 @@ int main(void)
 
 		delay(500);
 
-		int fan_temp = (int) level_temp;
-
 		// Fan speed set
-		switch ((int)level_temp)
-        {
-        case 45:
-            wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x00);
-            break;
-        case 47:
-            wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x02);
-            break;
-        case 49:
-            wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x03);
-            break;
-        case 51:
-            wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x04);
-            break;
-        case 53:
-            wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x05);
-            break;
-        case 55:
-            wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x06);
-            break;
-        case 57:
-            wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x07);
-            break;
-        case 59:
-            wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x08);
-            break;
-        case 61:
-            wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x09);
-            break;
-        case 63:
-            wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x01);
-            break;
-        default:
+		if (temp <= 45)
+		{
+			wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x00);
+		}
+		else if (temp <= 47)
+		{
+			wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x02);
+		}
+		else if (temp <= 49)
+		{
+			wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x03);
+		}
+		else if (temp <= 51)
+		{
+			wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x04);
+		}
+		else if (temp <= 53)
+		{
+			wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x05);
+		}
+		else if (temp <= 55)
+		{
+			wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x06);
+		}
+		else if (temp <= 57)
+		{
+			wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x07);
+		}
+		else if (temp <= 59)
+		{
+			wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x08);
+		}
+		else if (temp <= 61)
+		{
+			wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x09);
+		}
+		else
+		{
 			wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x01);
-            break;
-        }
+		}
 
 		delay(500);
 
