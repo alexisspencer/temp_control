@@ -251,7 +251,7 @@ int main(void)
 		int fan_temp = (int) level_temp;
 
 		// Fan speed set
-		switch (fan_temp)
+		switch ((int)level_temp)
         {
         case 45:
             wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x00);
