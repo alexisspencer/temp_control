@@ -197,7 +197,7 @@ int main(void)
             {
                 level_temp = 45;
 				setRGB(Max_LED, 0x00, 0x00, 0xff);
-				delay(10);
+				delay(500);
 				//wiringPiI2CWriteReg8(fd_i2c, 0x00, 0xff);
 				//wiringPiI2CWriteReg8(fd_i2c, RGB_Color, 1);
 				//wiringPiI2CWriteReg8(fd_i2c, RGB_Effect, 3);
@@ -208,7 +208,7 @@ int main(void)
             {
                 level_temp = 47;
 				setRGB(Max_LED, 0x1e, 0x90, 0xff);
-				delay(10);
+				delay(500);
 				// wiringPiI2CWriteReg8(fd_i2c, 0x00, 0xff);
 				// wiringPiI2CWriteReg8(fd_i2c, RGB_Color, 2);
                 wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x02);
@@ -217,7 +217,7 @@ int main(void)
             {
                 level_temp = 49;
 				setRGB(Max_LED, 0x00, 0xbf, 0xff);
-				delay(10);
+				delay(500);
 				// wiringPiI2CWriteReg8(fd_i2c, 0x00, 0xff);
 				// wiringPiI2CWriteReg8(fd_i2c, RGB_Color, 5);
                 wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x03);
@@ -226,7 +226,7 @@ int main(void)
             {
                 level_temp = 51;
 				setRGB(Max_LED, 0x5f, 0x9e, 0xa0);
-				delay(10);
+				delay(500);
 				// wiringPiI2CWriteReg8(fd_i2c, 0x00, 0xff);
 				// wiringPiI2CWriteReg8(fd_i2c, RGB_Color, 5);
                 wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x04);
@@ -235,7 +235,7 @@ int main(void)
             {
                 level_temp = 53;
 				setRGB(Max_LED, 0xff, 0xff, 0x00);
-				delay(10);
+				delay(500);
 				// wiringPiI2CWriteReg8(fd_i2c, 0x00, 0xff);
 				// wiringPiI2CWriteReg8(fd_i2c, RGB_Color, 1);
                 wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x05);
@@ -244,7 +244,7 @@ int main(void)
             {
                 level_temp = 55;
 				setRGB(Max_LED, 0xff, 0xd7, 0x00);
-				delay(10);
+				delay(500);
 				// wiringPiI2CWriteReg8(fd_i2c, 0x00, 0xff);
 				// wiringPiI2CWriteReg8(fd_i2c, RGB_Color, 3);
                 wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x06);
@@ -253,7 +253,7 @@ int main(void)
             {
                 level_temp = 57;
 				setRGB(Max_LED, 0xff, 0xa5, 0x00);
-				delay(10);
+				delay(500);
 				// wiringPiI2CWriteReg8(fd_i2c, 0x00, 0xff);
 				// wiringPiI2CWriteReg8(fd_i2c, RGB_Color, 3);
                 wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x07);
@@ -262,7 +262,7 @@ int main(void)
             {
                 level_temp = 59;
 				setRGB(Max_LED, 0xff, 0x8c, 0x00);
-				delay(10);
+				delay(500);
 				// wiringPiI2CWriteReg8(fd_i2c, 0x00, 0xff);
 				// wiringPiI2CWriteReg8(fd_i2c, RGB_Color, 4);
                 wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x08);
@@ -271,7 +271,7 @@ int main(void)
             {
                 level_temp = 61;
 				setRGB(Max_LED, 0xff, 0x45, 0x00);
-				delay(10);
+				delay(500);
 				// wiringPiI2CWriteReg8(fd_i2c, 0x00, 0xff);
 				// wiringPiI2CWriteReg8(fd_i2c, RGB_Color, 4);
                 wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x09);
@@ -280,39 +280,15 @@ int main(void)
             {
                 level_temp = 63;
 				setRGB(Max_LED, 0xff, 0x00, 0x00);
-				delay(10);
+				delay(500);
 				// wiringPiI2CWriteReg8(fd_i2c, 0x00, 0xff);
 				// wiringPiI2CWriteReg8(fd_i2c, RGB_Color, 0);
                 wiringPiI2CWriteReg8(fd_i2c, FAN_Control, 0x01);
             }
         }
 
-		delay(1000);
+		delay(500);
 
-		// if (count == 10)
-		// {
-		// 	// Turn on the RGB light effect
-		// 	wiringPiI2CWriteReg8(fd_i2c, 0x04, 0x04);
-		// }
-		// else if (count == 20)
-		// {
-		// 	// Turn on the RGB light effect
-		// 	wiringPiI2CWriteReg8(fd_i2c, 0x04, 0x02);
-		// }
-		// else if (count == 30)
-		// {
-		// 	// Turn on the RGB light effect
-		// 	wiringPiI2CWriteReg8(fd_i2c, 0x04, 0x01);
-		// }
-		// else if (count == 40)
-		// {
-		// 	// Turn on the RGB light effect
-		// 	wiringPiI2CWriteReg8(fd_i2c, 0x04, 0x03);
-		// 	count = 0;
-		// }
-		
-		// count++;
-		// delay(500);
 	}
 
 	return 0;
